@@ -1,17 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      All Properties
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content fullscreen>
+  <ion-card *ngFor="let property of properties">
+    <ion-card-header >
+      <ion-card-title>{{ property.title }}</ion-card-title>
+    </ion-card-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-row class="bottom-section ion-align-items-center ion-justify-content-right">
+      <ion-col size="8" class="col">
+        <b>Description</b> :
+        <br>{{ property.description }}
+        <br>
+        <br>
+        Size : {{ property.size }} m<sup>2</sup>
+        <br>
+        <br>
+        <ion-button color="light" routerLink="/about/{{property.id}}">Plus de détails</ion-button>
+      </ion-col>
+      <ion-col size="4" class="col">
+        <ion-img [src]="property.image"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

@@ -1,17 +1,59 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Add property
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content>
+  <form (ngSubmit)="onSubmit()" [formGroup]="ionicForm">
+    <ion-item lines="full">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input formControlName="title" type="text" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Description</ion-label>
+      <ion-input formControlName="description" type="text" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Size</ion-label>
+      <ion-input formControlName="size" type="number" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Floor</ion-label>
+      <ion-input formControlName="floor" type="number" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <!-- <ion-label>Image</ion-label>
+      <ion-input formControlName="image" type="file" required></ion-input> -->
+      <ion-label for="filePicker">Image</ion-label>
+      <ion-input type="file" id="filePicker" formControlName="image" (change)="handleFileSelect($event)"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Number of room</ion-label>
+      <ion-input formControlName="room" type="number" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Price</ion-label>
+      <ion-input formControlName="price" type="number" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Address</ion-label>
+      <ion-input formControlName="address" type="text" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Zipcode</ion-label>
+      <ion-input formControlName="zipcode" type="number" [maxlength]="5" required ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">City</ion-label>
+      <ion-input formControlName="city" type="text" required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="light" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

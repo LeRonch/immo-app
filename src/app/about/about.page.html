@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>More details !</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-button class="backButton" color="light" routerLink="">
+  ← Go back !
+</ion-button>
+
+<ion-content>
+  <ion-card *ngIf="property">
+    <ion-card-header >
+      <ion-card-title>{{ property.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row class="bottom-section ion-align-items-center ion-justify-content-right">
+        <ion-col size="8" class="col">
+          <b>Description</b> :
+          <br> {{ property.description }}
+          <br>
+          Size : {{ property.size }} m<sup>2</sup>
+          <br>
+          Floor : {{ property.floor }}
+          <br>
+          Rooms : {{ property.room }}
+          <br>
+          Price : {{ property.price }} €
+          <br>
+          Address : {{ property.address + ' ' + property.zipcode + ' ' + property.city }}
+          <br>
+          <br>
+          <ion-button (click)="deleteItem()" color="danger">
+            Delete
+          </ion-button>
+        </ion-col>
+        <ion-col size="4" class="col">
+          <ion-img [src]="property.image"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
