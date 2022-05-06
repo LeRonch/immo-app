@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiDataService } from '../api-data.service';
 import { Property } from '../interfaces/property';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -13,7 +13,7 @@ export class AboutPage implements OnInit {
   public property: Property;
   public id: string = this.route.snapshot.params.id.toString();
 
-  constructor(private apiDataService: ApiDataService, private route: ActivatedRoute) {}
+  constructor(private apiDataService: ApiDataService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
 
@@ -25,12 +25,13 @@ export class AboutPage implements OnInit {
   }
 
   deleteItem() {
-
     this.apiDataService.deleteRequest(this.id).subscribe(
-      (response) => console.log(response),
+      (response) => {
+        console.log(response);
+        this.router.navigate(['/']);
+      },
       (error) => console.log(error)
       );
-    window.location.href = '/';
   }
 
 }
