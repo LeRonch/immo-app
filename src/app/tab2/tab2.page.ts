@@ -71,9 +71,6 @@ export class Tab2Page implements OnInit {
       city: this.ionicForm.value.city,
     };
 
-    console.log(this.property);
-
-
     this.apiDataService.postRequest(this.property).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
